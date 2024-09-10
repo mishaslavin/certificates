@@ -26,6 +26,9 @@ type Options struct {
 	// are used to be able to load the provisioners when the SCEP authority is being
 	// validated.
 	SCEPProvisionerNames []string
+	// SkipValidation is used to skip the validation of the options, when implementing custom
+	// integrations
+	SkipValidation       bool
 }
 
 type comparablePublicKey interface {
@@ -34,6 +37,9 @@ type comparablePublicKey interface {
 
 // Validate checks the fields in Options.
 func (o *Options) Validate() error {
+	if o.SkipValidation {
+		return nil
+	}
 	switch {
 	case len(o.Intermediates) == 0:
 		return errors.New("no intermediate certificate available for SCEP authority")
