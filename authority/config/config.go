@@ -85,7 +85,7 @@ type Config struct {
 	CRL                *CRLConfig           `json:"crl,omitempty"`
 	MetricsAddress     string               `json:"metricsAddress,omitempty"`
 	SkipValidation     bool                 `json:"-"`
-	SkipSCEPValidation bool               `json:"-"`
+	SkipSCEPValidation bool                 `json:"-"`
 
 	// Keeps record of the filename the Config is read from
 	loadedFromFilepath string
