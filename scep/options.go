@@ -40,6 +40,7 @@ func (o *Options) Validate() error {
 	case o.SkipValidation:
 	        return nil
 	case len(o.Intermediates) == 0:
+		return errors.New("no intermediate certificate available for SCEP authority")
 	case o.SignerCert == nil:
 		return errors.New("no signer certificate available for SCEP authority")
 	}
